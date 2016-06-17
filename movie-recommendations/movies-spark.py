@@ -24,9 +24,9 @@ def find_best_model(data):
     bestRank = 0
     bestLambda = -1.0
     bestNumIter = -1    
-    ranks = [8]
-    lambdas = [0.1]
-    numIters = [10]    
+    ranks = [8, 12]
+    lambdas = [0.1, 10.0]
+    numIters = [10, 20]    
     min_error = float('inf')
     training, validation, test = data.randomSplit([0.6, 0.2, 0.2], 6) 
     for rank, lmbda, numIter in itertools.product(ranks, lambdas, numIters):
