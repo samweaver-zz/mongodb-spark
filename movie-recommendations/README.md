@@ -1,18 +1,27 @@
+# Movie recommendations
 
+An example of using the MongoDB Spark Connector and the [Movielens](http://grouplens.org/datasets/movielens/) dataset to recommend films.
 
-### Submit job
-```sh
-$ ./bin/spark-submit --master "local[4]" --conf "spark.mongodb.input.uri=mongodb://127.0.0.1/movies.movie-ratings?readPreference=primaryPreferred" --conf "spark.mongodb.output.uri=mongodb://127.0.0.1/movies.movie-ratings" --packages org.mongodb.spark:mongo-spark-connector_2.10:0.4 --repositories https://oss.sonatype.org/content/repositories/snapshots
-```
 ### Pre Reqs
-* Download and install Spark (this example uses Spark 1.6.x)
+* Download and install Spark (this example uses Spark 1.6.x) and have spark-submit on the path
 * Download and install MongoDB (this example uses v3.2.x)
-* Download the movies.zip and mongorestore it into mongodb
+* Download the data/movies.zip and mongorestore it into mongodb
 
 ### What the code does?
-* Reads from the movies.movie-ratings collection
-* Reads from the movies.personal-ratings collection
+* Reads from the `movies.movie_ratings` collection
+* Reads from the `movies.personal_ratings` collection
 * Creates a list of recommendations for the user based on their personal ratings
-* Saves those ratings back out to MongoDB in the movies.user_recommendations collection
+* Saves those ratings back out to MongoDB in the `movies.user_recommendations` collection
+
+### Running the examples
+
+There are two examples:
+  - [MovieRecommendation.scala](src/main/scala/example/MovieRecommendation.scala)
+  - [movie-recommendations.py](src/main/python/movie-recommendations.py)
+  
+To run one of them, refer to the appropriate script:
+  - [submit-scala.sh](submit-scala.sh) for Scala
+  - [submit-python.sh](submit-python.sh) for Python
+
 
 Questions? sam.weaver[at]mongodb[dot]com
